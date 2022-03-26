@@ -1,9 +1,7 @@
 # Movies Database API Request
 
-* Finished app deployed on Heroku:   https://tmdb-movies-api-request.herokuapp.com/
-* Similar app on Heroku: https://tmdb-rf-genres.herokuapp.com/
-* Source: https://www.themoviedb.org/documentation/api
-* API docs: https://developers.themoviedb.org/3/getting-started/introduction
+* Finished app deployed on Heroku:   https://github.com/plotly-dash-apps/603-movie-reviews-sentiment
+
 
 "helpers.py" currently has just a short list of sample movie id's - but you can consult tmdb for a full list of all movies, or by genre.
 How to get the full list of all movie ids:
