@@ -4,6 +4,7 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from helpers.key_finder import api_key
 from helpers.api_call import *
+from helpers.vader import sentiment_scores
 
 
 ########### Define a few variables ######
@@ -44,7 +45,13 @@ app.layout = html.Div(children=[
                     'backgroundColor': '#536869',
                     'textAlign': 'left',
                     },
-            className='six columns'),
+            className='twelve columns'),
+
+
+            html.H2('Output:'),
+            html.Div(id='output-div-1'),
+
+
 
         ], className='twelve columns'),
         html.Br(),
@@ -86,6 +93,7 @@ def on_click(n_clicks, data):
 @app.callback([Output('movie-title', 'children'),
                 Output('movie-release', 'children'),
                 Output('movie-overview', 'children'),
+                Output(component_id='output-div-1', component_property='children'),
                 ],
               [Input('tmdb-store', 'modified_timestamp')],
               [State('tmdb-store', 'data')])
@@ -93,7 +101,9 @@ def on_data(ts, data):
     if ts is None:
         raise PreventUpdate
     else:
-        return data['title'], data['release_date'], data['overview']
+        sentence = data['overview']
+        message = sentiment_scores(sentence)
+        return data['title'], data['release_date'], data['overview'], message
 
 
 ############ Deploy
