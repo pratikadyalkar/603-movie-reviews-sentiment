@@ -10,6 +10,7 @@ ids_list=[539, 432606, 412546, 274, 438070, 67344, 694, 29721, 104548, 95043, 92
 def api_pull(random_number):
     url=f'https://api.themoviedb.org/3/movie/{random_number}?api_key=ae72c660b8b898dd3e9d426e828b2299'
     response = requests.get(url).json()
+    #print(response)
     # json_file = json_normalize(response)
     # dictionary = json.load(response)
     return response
